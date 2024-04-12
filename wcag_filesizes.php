@@ -12,7 +12,7 @@
   function check_and_insert_filesize(string $content): string
   {
     // Create an array of allowed file extensions
-    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'ico', 'webp', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'pps', 'ppsx', 'odt', 'xls', 'xlsx', 'psd', 'xml'];
+    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'ico', 'webp', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'pps', 'ppsx', 'odt', 'xls', 'xlsx', 'psd', 'xml', 'zip', 'rar', '7z'];
     // Initialize DOMDocument
     $dom = new DOMDocument();
     libxml_use_internal_errors(true); // Suppress warnings
