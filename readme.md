@@ -12,9 +12,13 @@ Copy the code from ```wcage_filesize.php``` file or import ```wcage_filesize.php
 #### Use:
 
 ```php
-$content = get_the_content();
-$modified_content = check_and_insert_filesize($content);
-echo $modified_content;
+    ob_start();
+    the_content();
+    $content = ob_get_clean();
+    if ($content) :
+      $modified_content = check_and_insert_filesize($content);
+      echo $modified_content;
+    endif;
 ```
 
 **For example:**
@@ -23,14 +27,15 @@ echo $modified_content;
 <?php
     if (have_posts()) :
       while (have_posts()) : the_post(); ?>
+        <h2><?php the_title(); ?></h2>
         <?php
-        
-        <h2>the_title();</h2>
-        
-        $content = get_the_content();
-        $modified_content = check_and_insert_filesize($content);
-        echo $modified_content;
-        
+        ob_start();
+        the_content();
+        $content = ob_get_clean();
+        if ($content) :
+          $modified_content = check_and_insert_filesize($content);
+          echo $modified_content;
+        endif;
         ?>
       <?php endwhile; ?>
 <?php endif; ?>
